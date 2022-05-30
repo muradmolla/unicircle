@@ -1,19 +1,46 @@
 import { Image, ScrollView, StyleSheet, Text, View, ViewStyle } from 'react-native'
-import React from 'react'
-import QuarterCircleButton from '../components/menu/BottomNavigator'
+import React, { useEffect, useState } from 'react'
 import Colors from '../constants/Colors';
 import BottomNavigator from '../components/menu/BottomNavigator';
 import UserScroller from '../components/UserScroller';
+import Logo from '../components/microComponent/Logo';
+import EndpointAPI from '../methods/EndpointAPI';
+import { Swipee } from '../types';
+
+//TODO: FONT!!
+
+
 
 const SwiperScreen = () => {
-    const img: Image = require('../assets/images/splash.png')
-  return (
-    <View style={styles.container}>
-        <UserScroller />
+    const [swipee, setSwipee] = useState<null | Swipee>(null)
+    const [nextswipee, setNextSwipee] = useState<null | Swipee>(null)
+
+
+    const getSwipee = async () => {
+        const response = await EndpointAPI.swiper.next()
+        setSwipee(response);
+    }
+    const swipeLeft = async (accepted: boolean) => {
+        return () => {
+            getSwipee();
+        }
+    }
+    const swipeRight = async () => {
+        getSwipee();
+    }
+
+    useEffect(()=> {
+        getSwipee();
+    }, [])
+
+    return (
+        <View style={styles.container}>
+        <Logo />
+        <UserScroller swipee={swipee}/>
         <View style={styles.navigator}>
-            <BottomNavigator />
+            <BottomNavigator avatarFn={() => console.log('avatarClicked')} leftFn={swipeLeft} rightFn={swipeRight}/>
         </View>
-      
+
     </View>
   )
 }
@@ -32,8 +59,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-
-        //TODO: handle header space
         
     },
     navigator: {

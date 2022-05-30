@@ -1,4 +1,5 @@
-import { TextStyle } from "react-native";
+import {TextStyle } from "react-native";
+
 
 export const H2: TextStyle = {
     fontSize: 16,

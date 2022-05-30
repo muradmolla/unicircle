@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { IMG } from './components/PhotoViewer';
 
 declare global {
   namespace ReactNavigation {
@@ -34,3 +35,24 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+export interface Swipee {
+  id: number,
+  name: string,
+  age: number,
+  images: IMG[],
+  userId: number,
+  about: string,
+  interests: Interest[],
+  university: string,
+}
+
+export type Endpont = {
+  url: string,
+  method: string,
+}
+
+export type Interest = {
+  name: string,
+  id: number,
+}

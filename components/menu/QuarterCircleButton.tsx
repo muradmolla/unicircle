@@ -1,5 +1,5 @@
 import { ColorValue, Image, ImageProps, ImageStyle, Pressable, StyleSheet, Text, View, ViewStyle } from 'react-native'
-import React, { Component, EventHandler } from 'react'
+import React, { EventHandler } from 'react'
 import Button from '../../constants/Button';
 
 
@@ -26,7 +26,6 @@ export default function QuarterCircleButton(props: {
         icoStyles['right'] = 0;
         icoStyles.marginRight = circleRadius / 7;
     }
-
 
     return (
       <View style={styles.container}>

@@ -1,50 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import Interest from './Interest'
+import { Interest as InterestType } from '../../types'
 
-const TestInterests = [
-    {
-        name: 'Snowboard',
-        key: 0,
-    },
-    {
-        name: 'Billboard',
-        key: 2,
-    },
-    {
-        name: 'Guitar',
-        key: 3,
-    },
-    {
-        name: 'Piano',
-        key: 4,
-    },
-    {
-        name: 'Painting',
-        key: 5,
-    },
-    {
-        name: 'Freediving',
-        key: 6,
-    },
-    {
-        name: 'Dancing',
-        key: 7,
-    },
-    {
-        name: 'Kareoke',
-        key: 8,
-    },
-    {
-        name: 'Films',
-        key: 9,
-    },
+interface IProps {
+    interests: InterestType[]
+}
 
-]
-
-export default function InterestsContainer() {
-    const interests = TestInterests.map((v) => {
-        return <Interest name={v.name} />;
+export default function InterestsContainer(props: IProps) {
+    const interests = props.interests.map((v) => {
+        return <Interest name={v.name} key={v.id} />;
     });
   return (
     <View style={styles.container}>
