@@ -13,7 +13,13 @@ const Logo = () => {
   )
 }
 
+Logo.getMargin = () => {
+  return StatusBar.currentHeight + logoScaledDimensions[1];
+}
+
 export default Logo
+
+
 
 const styles = StyleSheet.create({
     logo: {

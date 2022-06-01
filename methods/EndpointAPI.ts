@@ -22,8 +22,7 @@ const EndpointAPI = {
                     {uri: 'https://i.ibb.co/4WjMG59/196003154-856736181906060-6420268993758200799-n.jpg', key: 0},
                     {uri: 'https://i.ibb.co/vkHLRHG/211461405-506432903793353-5666450343766570459-n.jpg', key: 2},
                 ],
-                userId: 0,
-                about: 'I am gay.',
+                about: 'I am a student.',
                 interests: [{name: 'skateboard', id: 0},{name: 'snowboard', id: 1}],
                 university: 'Kadir Has University'
             }

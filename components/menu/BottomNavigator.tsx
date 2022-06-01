@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         zIndex: 999,
-        
+        position: 'absolute',
+        width: '100%',
+        bottom: 0,
     },
 })

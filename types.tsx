@@ -16,10 +16,13 @@ declare global {
 
 export type RootStackParamList = {
   Swiper: undefined,
+  DMList: undefined,
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
 };
+
+
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
@@ -36,12 +39,12 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   NativeStackScreenProps<RootStackParamList>
 >;
 
+
 export interface Swipee {
   id: number,
   name: string,
   age: number,
   images: IMG[],
-  userId: number,
   about: string,
   interests: Interest[],
   university: string,
@@ -55,4 +58,11 @@ export type Endpont = {
 export type Interest = {
   name: string,
   id: number,
+}
+
+export type DMUser = {
+  name: string,
+  avatarUri: string,
+  age: number,
+  university: string,
 }

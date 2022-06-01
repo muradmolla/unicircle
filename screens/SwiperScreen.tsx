@@ -6,15 +6,15 @@ import UserScroller from '../components/UserScroller';
 import Logo from '../components/microComponent/Logo';
 import EndpointAPI from '../methods/EndpointAPI';
 import { Swipee } from '../types';
+import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 
 //TODO: FONT!!
 
-
-
-const SwiperScreen = () => {
+const SwiperScreen = ({navigation}) => {
     const [swipee, setSwipee] = useState<null | Swipee>(null)
     const [nextswipee, setNextSwipee] = useState<null | Swipee>(null)
 
+    
 
     const getSwipee = async () => {
         const response = await EndpointAPI.swiper.next()
@@ -37,10 +37,7 @@ const SwiperScreen = () => {
         <View style={styles.container}>
         <Logo />
         <UserScroller swipee={swipee}/>
-        <View style={styles.navigator}>
-            <BottomNavigator avatarFn={() => console.log('avatarClicked')} leftFn={swipeLeft} rightFn={swipeRight}/>
-        </View>
-
+        <BottomNavigator avatarFn={() => navigation.navigate('DMList')} leftFn={swipeLeft} rightFn={swipeRight}/>
     </View>
   )
 }
@@ -49,22 +46,16 @@ export default SwiperScreen
 
 interface IStyles {
     container: ViewStyle,
-    navigator: ViewStyle,
-    scoller: ViewStyle,
+    scroller: ViewStyle,
 
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<IStyles>({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         
-    },
-    navigator: {
-        position: 'absolute',
-        width: '100%',
-        bottom: 0,
     },
     scroller: {
         flex: 1,

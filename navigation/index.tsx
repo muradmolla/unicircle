@@ -12,6 +12,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import DMListScreen from '../screens/DMListScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import SwiperScreen from '../screens/SwiperScreen';
@@ -40,6 +41,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Swiper" component={SwiperScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="DMList" component={DMListScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>

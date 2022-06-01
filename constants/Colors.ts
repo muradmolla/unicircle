@@ -20,5 +20,7 @@ export default {
   green: '#82D8A2',
   lightBG: '#E5E5E5',
   gradientColors: ['#E06E68', '#836CE0'],
-  backdrop: '#C0C0C0'
+  backdrop: '#C0C0C0',
+  fadeTextGrey: '#4D4D4D',
+  fadeBorderGrey: '#A5A5A5'
 };
