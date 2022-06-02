@@ -15,7 +15,7 @@ const renderDMList = (navigation, DMList: ISingleDM[]) => {
     return DMList.map((v, i)=> {
         const extraStyles: ViewStyle = i !== 0 ? {borderTopWidth: 1, borderColor: Colors.fadeBorderGrey} : {};
         return (
-            <Pressable key={i}onPress={ () => console.log('pressed')}>
+            <Pressable key={i} onPress={ () => navigation.navigate('DM', {user: v.dmUser})}>
                 <View style={[styles.singleUserContainer, extraStyles]}>
                 <View>
                     <Image style={styles.userAvatar} source={{uri: v.dmUser.avatarUri}} />
@@ -46,7 +46,7 @@ const DMList = ({navigation}) => {
                 name: 'Mami',
                 age: 22,
                 university: 'Kadir Has University',
-                avatarUri: 'https://i.ibb.co/KzxMNLH/212658975-187435943339118-5695072243577673779-n.jpg',
+                avatarUri: 'https://instagram.fist11-1.fna.fbcdn.net/v/t51.2885-15/180677875_279232057166099_1045390209233399941_n.jpg?stp=dst-jpg_e35&_nc_ht=instagram.fist11-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=VhKP8elWAH8AX_rMXI2&tn=b9ds5Upo5P2TRiaA&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=MjU2NjQwMjUwMTYzMzc5NzU3Mw%3D%3D.2-ccb7-5&oh=00_AT8ct2A5c9WMpJWNIEfNv-pOSyMjsKxDqoHOBSmqwZPZ0A&oe=62A04A96&_nc_sid=30a2ef',
             },
             message: 'Iyi yapmissin',
         }

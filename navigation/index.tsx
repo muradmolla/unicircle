@@ -13,6 +13,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import DMListScreen from '../screens/DMListScreen';
+import LoginScreen from '../screens/AuthScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import SwiperScreen from '../screens/SwiperScreen';
@@ -20,6 +21,7 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import DmScreen from '../screens/DmScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -41,7 +43,9 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Swiper" component={SwiperScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Auth" component={LoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="DMList" component={DMListScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="DM" component={DmScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>

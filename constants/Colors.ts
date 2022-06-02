@@ -18,6 +18,8 @@ export default {
   },
   red: '#F56969',
   green: '#82D8A2',
+  yellow: '#F4BB29',
+  buttonGrey: '#BFBFBF',
   lightBG: '#E5E5E5',
   gradientColors: ['#E06E68', '#836CE0'],
   backdrop: '#C0C0C0',

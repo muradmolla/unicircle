@@ -1,4 +1,4 @@
-import { View, Text, Image, ImageStyle, StyleSheet, Dimensions, ViewStyle, TouchableHighlight } from 'react-native'
+import { View, Text, Image, ImageStyle, StyleSheet, Dimensions, ViewStyle, TouchableHighlight, Pressable } from 'react-native'
 import {useState} from 'react'
 import React from 'react'
 import Button from '../constants/Button';
@@ -9,18 +9,22 @@ interface IProps {
 
 export default function PhotoViewer(props: IProps) {
     const [transition, setTransition] = useState(0);
+    const extraStyle = {left: -transition*Dimensions.get('window').width};
+    const translate = (transition: number, direction: ETransationDirection, galleryLength: number) => {
+        setTransition(Math.abs((transition + direction) % galleryLength + galleryLength ) % galleryLength )
+    };
   return (
     <View style={styles.container}>
-            <View style={[styles.translator, , {left: -transition*Dimensions.get('window').width}]} >
-                {imageMapper(props.images)}
+            <View style={[styles.translator, extraStyle]} >
+                {imageMapper(props.images, transition)}
             </View>
         <View style={styles.dotContainer}>
             {dots(props.images.length, transition)}
         </View>
-        <TouchableHighlight  onPress={() => translate(transition, setTransition, ETransationDirection.left, props.images.length)}>
+        <TouchableHighlight delayPressIn={0} onPressIn={() => translate(transition, ETransationDirection.left, props.images.length)}>
             <View style={[styles.touchableLeft, styles.touchables]}/>
         </TouchableHighlight>
-        <TouchableHighlight  onPress={() => translate(transition, setTransition, ETransationDirection.right, props.images.length)}>
+        <TouchableHighlight delayPressIn={0} onPressIn={() => translate(transition, ETransationDirection.right, props.images.length)}>
             <View style={[styles.touchableRight, styles.touchables]}/>
         </TouchableHighlight>
     </View>
@@ -41,11 +45,10 @@ enum ETransationDirection {
     right = 1
 }
 
-const translate = (transition: number, setTransition: Function, direction: ETransationDirection, galleryLength: number) => {
-    setTransition(Math.abs((transition + direction) % galleryLength + galleryLength ) % galleryLength )
-};
 
-const imageMapper = (imgArray: IMG[]) => {
+
+const imageMapper = (imgArray: IMG[], transition: number) => {
+    const img = imgArray[transition]
     return imgArray.map((img: IMG) => 
             <Image key={img.key} style={styles.image} source={{uri: img.uri}} />
     );
@@ -91,7 +94,7 @@ const styles = StyleSheet.create<IStyles>({
         position: 'absolute',
         width: Dimensions.get('window').width / 4,
         height: Dimensions.get('window').height - Button.circular.radius,
-        opacity: 0.1
+        opacity: 0.4
     },
     dotContainer: {
         position: 'absolute',

@@ -19,7 +19,7 @@ const DMListScreen = ({navigation}) => {
                     <DMList navigation={navigation}/>
                 </ScrollView>
             </View>
-            <BottomNavigator avatarFn={() => navigation.navigate('Swiper')} leftFn={() => console.log('avatar')} rightFn={() => console.log('avatar')}/>
+            <BottomNavigator navigationType='DM' avatarFn={() => navigation.navigate('Swiper')} leftFn={() => console.log('avatar')} rightFn={() => console.log('avatar')}/>
         </LinearGradient>
   )
 }

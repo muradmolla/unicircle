@@ -1,5 +1,5 @@
 
-const baseUrlMock = 'https://9308d822-be16-4d45-86c8-b429d195c903.mock.pstmn.io';
+const baseUrlMock = 'https://3b51dc45-a3c7-48d4-a034-118abb3d89a4.mock.pstmn.io';
 
 export default {
     baseUrl: baseUrlMock,
